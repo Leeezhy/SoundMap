@@ -93,9 +93,14 @@ If you're interested in spatial UI, auditory interaction, or HCI design—feel f
 
 ## 🧭 License & Attribution
 
-MIT License.  
-Credits to Microsoft Soundscape and the soundscape-community contributors.  
-All modified components are clearly marked.
+This project is distributed under the MIT License.
+
+It is based on the open-source work by:
+- [Microsoft Soundscape](https://github.com/microsoft/soundscape)
+- [Soundscape Community](https://github.com/soundscape-community/soundscape)
+
+All modifications, additions, and research extensions made in this version (SoundMap)  
+are authored and maintained by [Leeezhy](https://github.com/Leeezhy).
 
 ---
 
