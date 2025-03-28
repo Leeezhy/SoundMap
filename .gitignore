@@ -1,0 +1,76 @@
+# macOS
+.DS_Store
+
+# Xcode build
+build/
+DerivedData/
+
+# Xcode workspace user data
+*.xcuserstate
+*.xcworkspace/xcuserdata/
+*.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+
+# Xcode project user data
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.xcuserstate
+xcuserdata/
+
+# Swift Package Manager
+.build/
+.swiftpm/
+Package.resolved
+
+# CocoaPods
+Pods/
+Podfile.lock  # 可选，如果你想让别人用的是最新版本就忽略掉
+
+# Temporary files
+*.log
+*.tmp
+*.swp
+*~
+*.out
+
+# App-specific (你项目中有这个路径)
+apps/ios/Pods/Headers/Public/Realm
+
+# IDE folders
+.vscode/
+.idea/
+.vs/
+
+# Fastlane outputs
+**/fastlane/report.xml
+**/fastlane/Preview.html
+**/fastlane/screenshots
+**/fastlane/test_output
+
+# Python
+venv/
+.venv/
+__pycache__/
+
+# Node.js
+node_modules/
+bower_components/
+
+# Private
+private_keys/
+svcs/data/env/
+
+# Carthage (你没用可以保留但注释掉)
+# Carthage/
+# Carthage/Build/
+
+# Windows / Visual Studio（对你的 iOS 项目可忽略）
+# *.suo
+# *.user
+# *.pdb
+# *.vcxproj*
+# *.sln
+# packages/
+# AppPackages
+# publish/
