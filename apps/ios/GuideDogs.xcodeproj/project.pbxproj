@@ -1580,6 +1580,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		57434E342D98554C0046361D /* VerticalAudio */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = VerticalAudio; sourceTree = "<group>"; };
 		DC207DED2D4AAB1E00124E8A /* Views */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); name = Views; path = "Code/Visual UI/Views"; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
@@ -4247,6 +4248,7 @@
 		D30685DB1B52C657004F21D8 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				57434E342D98554C0046361D /* VerticalAudio */,
 				2809B80A2379E8F100F6C9AC /* Calibration */,
 				28952D44228F6AAB00FC91B4 /* Beacons */,
 				28952D43228F6A9200FC91B4 /* Effects */,
@@ -4499,6 +4501,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				57434E342D98554C0046361D /* VerticalAudio */,
 				DC207DED2D4AAB1E00124E8A /* Views */,
 			);
 			name = Soundscape;
