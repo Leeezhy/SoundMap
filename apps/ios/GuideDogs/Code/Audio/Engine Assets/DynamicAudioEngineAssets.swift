@@ -178,3 +178,25 @@ enum PreviewWandAsset: String, DynamicAudioEngineAsset {
     static var selector: AssetSelector?
     static var beatsInPhrase: Int = 1
 }
+
+// MARK: - Custom Beacons
+
+enum UpBeacon: String, DynamicAudioEngineAsset {
+    case up = "pitch_up"
+    
+    static var selector: AssetSelector? = { input in
+        return (.up, 1.0)
+    }
+    
+    static let beatsInPhrase: Int = 1
+}
+
+enum DownBeacon: String, DynamicAudioEngineAsset {
+    case down = "pitch_down"
+    
+    static var selector: AssetSelector? = { input in
+        return (.down, 1.0)
+    }
+    
+    static let beatsInPhrase: Int = 1
+}

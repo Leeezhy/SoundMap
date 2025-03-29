@@ -10,7 +10,7 @@ import UIKit
 import SafariServices
 
 enum MenuItem {
-    case home, donate,  recreation, devices, help, settings, status, feedback, rate, share
+    case home, donate,  recreation, devices, help, settings, status, feedback, rate, share, testVerticalAudio, testDownAudio
     
     var localizedString: String {
         switch self {
@@ -24,6 +24,8 @@ enum MenuItem {
         case .feedback:   return GDLocalizedString("menu.send_feedback")
         case .rate:       return GDLocalizedString("menu.rate")
         case .share:      return GDLocalizedString("share.title")
+        case .testVerticalAudio: return "Test Vertical Audio"
+        case .testDownAudio: return "Test Down Audio"
         }
     }
     
@@ -39,6 +41,8 @@ enum MenuItem {
         case .feedback:   return GDLocalizedString("menu.send_feedback")
         case .rate:       return GDLocalizedString("menu.rate")
         case .share:      return GDLocalizedString("share.title")
+        case .testVerticalAudio: return "Test Vertical Audio"
+        case .testDownAudio: return "Test Down Audio"
         }
     }
     
@@ -54,6 +58,8 @@ enum MenuItem {
         case .feedback:   return UIImage(named: "ic_email_28px")
         case .rate:       return UIImage(named: "ic_star_rate_28px")
         case .share:      return UIImage(systemName: "square.and.arrow.up")
+        case .testVerticalAudio: return UIImage(systemName: "arrow.up.and.down.circle")
+        case .testDownAudio: return UIImage(systemName: "arrow.down.circle")
         }
     }
 }
@@ -63,6 +69,8 @@ class MenuViewController: UIViewController {
     private(set) var selected: MenuItem = .home
     
     private let menuView = MenuView()
+    
+    private var currentQueuePlayerID: UUID?
     
     override func loadView() {
         // Build views for menu items
@@ -74,6 +82,8 @@ class MenuViewController: UIViewController {
         menuView.addMenuItem(.feedback)
         menuView.addMenuItem(.rate)
         menuView.addMenuItem(.share)
+        menuView.addMenuItem(.testVerticalAudio)
+        menuView.addMenuItem(.testDownAudio)
         
         // Attach a listener for button taps on each menu item
         for item in menuView.items {
@@ -141,6 +151,75 @@ class MenuViewController: UIViewController {
         case .share:
             closeMenu {
                 AppShareHelper.share()
+            }
+        case .testVerticalAudio:
+            // 防止重复播放
+            guard currentQueuePlayerID == nil else {
+                GDLogAudioInfo("Audio is already playing")
+                return
+            }
+            
+            GDLogAudioInfo("Starting custom beacon audio test")
+            
+            // 获取用户当前位置
+            guard let userLocation = AppContext.shared.geolocationManager.location else {
+                GDLogAudioError("No user location available")
+                return
+            }
+            
+            // 创建并播放上升音频
+            guard let sound = BeaconSound(UpBeacon.self, at: userLocation, isLocalized: false) else {
+                GDLogAudioError("Failed to create up beacon sound")
+                return
+            }
+            
+            if let playerId = AppContext.shared.audioEngine.play(sound) {
+                GDLogAudioInfo("Started playing up beacon sound")
+                currentQueuePlayerID = playerId
+                
+                // 播放1.5秒后停止
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                    AppContext.shared.audioEngine.stop(playerId)
+                    GDLogAudioInfo("Stopped up beacon sound")
+                    self.currentQueuePlayerID = nil
+                }
+            } else {
+                GDLogAudioError("Failed to start playing up beacon sound")
+            }
+            
+        case .testDownAudio:
+            // 防止重复播放
+            guard currentQueuePlayerID == nil else {
+                GDLogAudioInfo("Audio is already playing")
+                return
+            }
+            
+            GDLogAudioInfo("Starting down beacon audio test")
+            
+            // 获取用户当前位置
+            guard let userLocation = AppContext.shared.geolocationManager.location else {
+                GDLogAudioError("No user location available")
+                return
+            }
+            
+            // 创建并播放下降音频
+            guard let sound = BeaconSound(DownBeacon.self, at: userLocation, isLocalized: false) else {
+                GDLogAudioError("Failed to create down beacon sound")
+                return
+            }
+            
+            if let playerId = AppContext.shared.audioEngine.play(sound) {
+                GDLogAudioInfo("Started playing down beacon sound")
+                currentQueuePlayerID = playerId
+                
+                // 播放1.5秒后停止
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                    AppContext.shared.audioEngine.stop(playerId)
+                    GDLogAudioInfo("Stopped down beacon sound")
+                    self.currentQueuePlayerID = nil
+                }
+            } else {
+                GDLogAudioError("Failed to start playing down beacon sound")
             }
         default:
             select(item)

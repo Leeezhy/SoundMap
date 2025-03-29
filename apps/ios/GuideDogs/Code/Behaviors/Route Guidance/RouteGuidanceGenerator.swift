@@ -76,6 +76,9 @@ class RouteGuidanceGenerator: AutomaticGenerator, ManualGenerator {
     
     private unowned let owner: RouteGuidance
     
+    // Add vertical audio player IDs
+    private var verticalAudioPlayerID: AudioPlayerIdentifier?
+    
     init(_ owner: RouteGuidance, motionActivity: MotionActivityProtocol, alreadyCompleted: Bool) {
         self.owner = owner
         self.alreadyCompleted = alreadyCompleted
@@ -274,6 +277,25 @@ class RouteGuidanceGenerator: AutomaticGenerator, ManualGenerator {
         }
         
         awaitingDepartureCalloutCompletion = true
+        
+        // Play vertical audio based on waypoint index
+        if previous.index > 0 && previous.index < owner.content.waypoints.count - 1 {
+            // Get the previous and next waypoint locations
+            let prevLocation = owner.content.waypoints[previous.index - 1].location
+            let nextLocation = owner.content.waypoints[previous.index + 1].location
+            
+            // Calculate vertical difference
+            let prevAltitude = prevLocation.altitude
+            let nextAltitude = nextLocation.altitude
+            
+            // Create and play vertical sound
+            let verticalSound = VerticalAudioSound(direction: nextAltitude >= prevAltitude ? .up : .down)
+            
+            // Play the sound using AudioEngine's discrete audio playback
+            _ = AppContext.shared.audioEngine.play(verticalSound)
+            
+            GDLogAudioInfo("Triggered vertical audio playback for altitude change: \(nextAltitude - prevAltitude)")
+        }
         
         let callouts: [CalloutProtocol]  = [
             WaypointArrivalCallout(index: previous.index,

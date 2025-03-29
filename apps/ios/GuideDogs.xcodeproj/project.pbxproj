@@ -365,6 +365,7 @@
 		568480931CBC9CEE004B4227 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568480921CBC9CEE004B4227 /* SettingsViewController.swift */; };
 		568480981CBD6A19004B4227 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568480971CBD6A19004B4227 /* Colors.swift */; };
 		568480A41CBDA685004B4227 /* POITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568480A31CBDA685004B4227 /* POITableViewCell.swift */; };
+		57434E3E2D985ECE0046361D /* VerticalAudioSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57434E3D2D985ECE0046361D /* VerticalAudioSound.swift */; };
 		620118CB24AAB489004B0380 /* LocationAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620118C724AAB489004B0380 /* LocationAction.swift */; };
 		620118CC24AAB489004B0380 /* LocationActionAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620118C824AAB489004B0380 /* LocationActionAlert.swift */; };
 		620118CD24AAB489004B0380 /* LocationActionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620118C924AAB489004B0380 /* LocationActionDelegate.swift */; };
@@ -1141,6 +1142,7 @@
 		568480921CBC9CEE004B4227 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = SettingsViewController.swift; path = "Code/Visual UI/View Controllers/Settings/SettingsViewController.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		568480971CBD6A19004B4227 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		568480A31CBDA685004B4227 /* POITableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = POITableViewCell.swift; path = "Code/Visual UI/Controls/UITableView/POITableViewCell.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		57434E3D2D985ECE0046361D /* VerticalAudioSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalAudioSound.swift; sourceTree = "<group>"; };
 		620118C724AAB489004B0380 /* LocationAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationAction.swift; sourceTree = "<group>"; };
 		620118C824AAB489004B0380 /* LocationActionAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationActionAlert.swift; sourceTree = "<group>"; };
 		620118C924AAB489004B0380 /* LocationActionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationActionDelegate.swift; sourceTree = "<group>"; };
@@ -4205,6 +4207,7 @@
 		C3DC32C21F3BAB4A004D29EF /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				57434E3D2D985ECE0046361D /* VerticalAudioSound.swift */,
 				C38B7B2A2193828F00A6F1BE /* Sounds.swift */,
 				281A9A9523AAAEB1008E548D /* TTSSound.swift */,
 				281A9A9923AAAF17008E548D /* GenericSound.swift */,
@@ -5212,6 +5215,7 @@
 				28A16122283C3AF00081CFA4 /* TourGenerator.swift in Sources */,
 				C3A5847822BAF8F00014C55E /* CourseProvider.swift in Sources */,
 				B9DC022E244778A500F24051 /* PushNotification.swift in Sources */,
+				57434E3E2D985ECE0046361D /* VerticalAudioSound.swift in Sources */,
 				286DC6AE21E6B61B001CD88A /* Verbosity.swift in Sources */,
 				B9C89C8320628FF5008D12E6 /* RemoteCommandManager.swift in Sources */,
 				620118D324AABBAF004B0380 /* LocationActionHandler.swift in Sources */,
